@@ -1,14 +1,18 @@
-const { ccclass, property } = cc._decorator;
-const ProjectWidth = 960;
-const ProjectHeight = 640;
+const { ccclass } = cc._decorator;
+const ProjectWidth = 1080;
+const ProjectHeight = 1920;
 
 @ccclass
 export default class NewClass extends cc.Component
-{    
-    start()
+{   
+    update()
     {
-        let scale = Math.min(cc.view.getCanvasSize().width / ProjectWidth, cc.view.getCanvasSize().height /ProjectHeight);
-        this.node.setScale(scale / cc.view.getScaleX());
-        console.log("Width: " + cc.view.getCanvasSize().width + " Height: " + cc.view.getCanvasSize().height + " Scales: " + cc.view.getScaleX() + " " + cc.view.getScaleY() + " " + scale);
+        this.AdaptResolution();
+    }
+
+    private AdaptResolution()
+    {
+        let scale = Math.min(cc.view.getCanvasSize().width / ProjectWidth, cc.view.getCanvasSize().height / ProjectHeight);
+        this.node.setScale(scale / cc.view.getScaleX());        
     }
 }
