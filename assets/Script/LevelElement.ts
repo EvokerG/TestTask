@@ -6,6 +6,5 @@ export default class LevelElement extends MovingElement
 {
     @property(Number)
     public FirstPos
-    public LastPos
-    public CreatedAt;
+    public LastPos;    
 }
