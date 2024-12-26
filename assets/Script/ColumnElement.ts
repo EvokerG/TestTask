@@ -1,40 +1,41 @@
 import LevelElement from "./LevelElement";
 const {ccclass, property} = cc._decorator;
 const ColumnCenterHalfWidth = 10;
-const MinColumnDist = 100;
-const MaxColumnDist = 450;
-const MinColumnWidth = 50;
-const MaxColumnWidth = 200;
-const StartingColumnWidth = 100;
+const MinColumnDist = 70;
+const MaxColumnDist = 350;
+const MinColumnWidth = 20;
+const MaxColumnWidth = 150;
 
 @ccclass
 export default class ColumnElement extends LevelElement
 {
-    @property(Boolean)
-    public WasVisited;
+    public WasVisited
+    public static Parametres = [];
 
-    constructor(position: number, endsAt: number, fixed: boolean = false) {
-        super();
-        if (fixed)
-        {
-            this.FirstPos = 0;
-            this.LastPos = StartingColumnWidth;
-            this.EndsAt = 0;            
+    public static newColumn(): ColumnElement {
+        let col = new ColumnElement();
+        if (ColumnElement.Parametres[0] == null) {
+            ColumnElement.Parametres[0] = 0;
         }
-        else
-        {
-            let Distance = Math.floor(Math.random() * (MaxColumnDist - MinColumnDist));
-            this.FirstPos = position + MinColumnDist + Distance;
-            let Width = Math.floor(Math.random() * (MaxColumnWidth - MinColumnWidth));
-            this.LastPos = this.FirstPos + MinColumnWidth + Width;
-            this.EndsAt = endsAt + Distance + Width;
-        }
-        this.WasVisited = fixed;
+        if (ColumnElement.Parametres[1] == null) {
+            ColumnElement.Parametres[1] = 0;
+        }       
+        let Distance = Math.floor(Math.random() * (MaxColumnDist - MinColumnDist) + MinColumnDist);
+        col.FirstPos = ColumnElement.Parametres[0] + MinColumnDist + Distance;
+        let Width = Math.floor(Math.min(Math.random() * (MaxColumnWidth - MinColumnWidth) + MinColumnWidth, Math.random() * (MaxColumnWidth - MinColumnWidth) + MinColumnWidth));        
+        col.LastPos = col.FirstPos + MinColumnWidth + Width;
+        col.EndsAt = ColumnElement.Parametres[1] + MinColumnDist + Distance + MinColumnWidth + Width;
+        col.WasVisited = false;
+        return col;
     }
 
     public OnCenter(Position: number):boolean
     {
         let Center = (this.FirstPos + this.LastPos) / 2;
         return (Position >= Center - ColumnCenterHalfWidth && Position <= Center + ColumnCenterHalfWidth);
+    }
+
+    update(dt) {
+        this.node.children[0].active = !this.WasVisited;
     }
 }

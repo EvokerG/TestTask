@@ -2,8 +2,7 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class UIScaler extends cc.Component
-{       
-    @property(Number)
+{  
     static ProjectWidth = 0
     static ProjectHeight = 0;
 
