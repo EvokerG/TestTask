@@ -7,12 +7,28 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Level.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Player.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Player.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\LineElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LineElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\FadeAway.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FadeAway.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\ColumnElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ColumnElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\LevelElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LevelElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\UIScaler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UIScaler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\MovingElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
@@ -21,18 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\BerryElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BerryElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\ColumnElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ColumnElement.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Player.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Player.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\UIScaler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UIScaler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,15 +46,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FadeAway.ts",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\FadeAway.ts",
+              "RelativeDocumentMoniker": "FadeAway.ts",
+              "ToolTip": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\FadeAway.ts",
+              "RelativeToolTip": "FadeAway.ts",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-27T10:01:46.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Level.ts",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Level.ts",
+              "RelativeDocumentMoniker": "Level.ts",
+              "ToolTip": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Level.ts",
+              "RelativeToolTip": "Level.ts",
+              "ViewState": "AQIAAJsAAAAAAAAAAAAAAKUAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2024-12-25T14:10:42.169Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "UIScaler.ts",
               "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\UIScaler.ts",
               "RelativeDocumentMoniker": "UIScaler.ts",
@@ -58,23 +88,25 @@
               "RelativeToolTip": "UIScaler.ts",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-12-25T14:11:00.246Z"
+              "WhenOpened": "2024-12-25T14:11:00.246Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Player.ts",
               "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Player.ts",
               "RelativeDocumentMoniker": "Player.ts",
               "ToolTip": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Player.ts",
               "RelativeToolTip": "Player.ts",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAEAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAABwAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-12-25T14:10:58.836Z"
+              "WhenOpened": "2024-12-25T14:10:58.836Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "MovingElement.ts",
               "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\MovingElement.ts",
               "RelativeDocumentMoniker": "MovingElement.ts",
@@ -87,20 +119,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "LineElement.ts",
               "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\LineElement.ts",
               "RelativeDocumentMoniker": "LineElement.ts",
               "ToolTip": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\LineElement.ts",
               "RelativeToolTip": "LineElement.ts",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAADgAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2024-12-25T14:10:51.676Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "LevelElement.ts",
               "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\LevelElement.ts",
               "RelativeDocumentMoniker": "LevelElement.ts",
@@ -113,32 +145,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Level.ts",
-              "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Level.ts",
-              "RelativeDocumentMoniker": "Level.ts",
-              "ToolTip": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\Level.ts",
-              "RelativeToolTip": "Level.ts",
-              "ViewState": "AQIAAIoAAAAAAAAAAAAAAJMAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-12-25T14:10:42.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "ColumnElement.ts",
               "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\ColumnElement.ts",
               "RelativeDocumentMoniker": "ColumnElement.ts",
               "ToolTip": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\ColumnElement.ts",
               "RelativeToolTip": "ColumnElement.ts",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAADAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAAUAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2024-12-25T14:10:32.949Z"
+              "WhenOpened": "2024-12-25T14:10:32.949Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "BerryElement.ts",
               "DocumentMoniker": "C:\\Users\\USER\\Documents\\COCOS\\TestTask\\assets\\Script\\BerryElement.ts",
               "RelativeDocumentMoniker": "BerryElement.ts",

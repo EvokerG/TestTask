@@ -1,7 +1,8 @@
 import LevelElement from "./LevelElement";
+import Player from "./Player";
 
 const { ccclass, property } = cc._decorator;
-const StickExtensionSpeed = 1200;
+const StickExtensionSpeed = 1100;
 
 @ccclass
 export default class LineElement extends LevelElement {
@@ -52,6 +53,7 @@ export default class LineElement extends LevelElement {
                 this.StickFallDelay = 0.5;
                 this.node.parent.off(cc.Node.EventType.TOUCH_START);                
                 this.node.parent.off(cc.Node.EventType.TOUCH_END);
+                Player.Kick();
             }
             if (this.StickFallDelay <= 0 && this.Falling) {
                 this.node.angle -= Math.min(Math.abs(-5 - this.node.rotation) * 5 * deltaTime, Math.abs(this.node.rotation - 90));
