@@ -13,7 +13,6 @@ export default class FadeAway extends cc.Component {
         FadeAway.Text.opacity = 255;
         FadeAway.Text.x = position;
         FadeAway.Text.y = -125;
-        console.log("I'm at " + FadeAway.Text.position);
     }
 
     start() {

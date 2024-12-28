@@ -49,11 +49,10 @@ export default class Level extends cc.Component {
             Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
             i++;
         } while (Level.TargetAt.WasVisited != false);
-        console.log("Next target is at " + Level.TargetAt.FirstPos + " " + Level.TargetAt.EndsAt);
         Level.stage = 1;
     }
 
-    public static Place(elem:any) {
+    public static Place(elem:LevelElement) {
         elem.node.setPosition((elem.LastPos + elem.FirstPos) / 2 + Level.DistanceFromStart, elem.node.y);
         elem.node.width = elem.LastPos - elem.FirstPos;
     }
@@ -79,7 +78,7 @@ export default class Level extends cc.Component {
         thisEl.EndsAt -= Distance;
         if (thisEl.EndsAt < ElementDeletionDistance) {              
             Level.Level = Level.Level.reverse();
-            console.log("Deleting at " + thisEl.EndsAt + " " + Level.Level.pop().EndsAt);
+            Level.Level.pop();
             Level.Level = Level.Level.reverse();
             thisEl.node.destroy;
         }        
@@ -161,7 +160,6 @@ export default class Level extends cc.Component {
                 Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
                 i++;
             } while (Level.TargetAt.WasVisited != false);
-            console.log("Next target is at " + Level.TargetAt.FirstPos + " " + Level.TargetAt.EndsAt);
             Level.stage = 1;
         }, 0, 0, 0.4);           
     }
@@ -192,7 +190,6 @@ export default class Level extends cc.Component {
                             Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
                             i++;
                         } while (Level.TargetAt.WasVisited != false);
-                        console.log("Next target is at " + Level.TargetAt.FirstPos + " " + Level.TargetAt.EndsAt);
                         Level.GenerateLevel();
                     } else {
                         Player.Die();

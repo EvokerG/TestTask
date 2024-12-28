@@ -28,11 +28,13 @@ export default class UIManager extends cc.Component {
 
     public Die() {
         UIManager.Stage = 2;
+        this.GameInterface.active = false;
         this.GameOverInterface.active = true;
     }
 
     public Restart() {
         UIManager.Stage = 1;
+        this.GameInterface.active = true;
         this.GameOverInterface.active = false;
         Level.ResetLevel();
     }
