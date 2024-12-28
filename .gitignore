@@ -50,4 +50,4 @@ Thumbs.db
 
 *.vsidx
 .vscode/
-/Scripts/.vs/
+/assets/Script/.vs
