@@ -5,6 +5,7 @@ import LineElement from "./LineElement";
 import LevelElement from "./LevelElement";
 import Player from "./Player";
 import FadeAway from "./FadeAway";
+import UIManager from "./UIManager";
 const { ccclass, property } = cc._decorator;
 const GeneratorQueueLength = 5000;
 const BackgroundRepeatPeriod = 24000;
@@ -26,11 +27,30 @@ export default class Level extends cc.Component {
 
     public static ResetLevel()
     {
+        Player.SetDeafaultPos();
         Level.Background.setPosition(Math.random() * 19000 + 1000, 0);
         Level.DistanceFromStart = StartingDisplacement;
         Level.Level.forEach(function (value) {
             value.node.destroy();
         })
+        Level.Level = [];
+        let column = cc.instantiate(Level.ColumnPrefab);
+        column.parent = Level.LevelElementsParent;
+        column.getComponent(ColumnElement).FirstPos = -StartingColumnWidth;
+        column.getComponent(ColumnElement).LastPos = 0;
+        column.getComponent(ColumnElement).EndsAt = 0;
+        column.getComponent(ColumnElement).WasVisited = true;
+        Level.Place(column.getComponent(ColumnElement));
+        Level.Level.push(column.getComponent(ColumnElement));
+        Level.GenerateLevel();
+        Level.PlayerAt = column.getComponent(ColumnElement);
+        let i = 1;
+        do {
+            Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
+            i++;
+        } while (Level.TargetAt.WasVisited != false);
+        console.log("Next target is at " + Level.TargetAt.FirstPos + " " + Level.TargetAt.EndsAt);
+        Level.stage = 1;
     }
 
     public static Place(elem:any) {
@@ -157,56 +177,59 @@ export default class Level extends cc.Component {
     }
 
     update(dt) {
-        if (Level.stage == 0) {
-            if (-Level.DistanceFromStart >= Level.MoveTo - StartingDisplacement) {
-                if (Level.MoveTo == Level.TargetAt.LastPos) {
-                    Player.AddScore();                    
-                    Level.stage = 1;
-                    Level.PlayerAt = Level.TargetAt;
-                    Player.Idle();
-                    Level.PlayerAt.WasVisited = true;
-                    Level.SortLevelOrder();
-                    let i = 0;
-                    do {
-                        Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
-                        i++;
-                    } while (Level.TargetAt.WasVisited != false);
-                    console.log("Next target is at " + Level.TargetAt.FirstPos + " " + Level.TargetAt.EndsAt);
-                    Level.GenerateLevel();
-                } else {
-                    Player.Die();
-                    Level.stage = 3;
-                }
-            } else {
-                Level.MoveAll(Math.min(Level.BaseWalkSpeed * dt, Level.MoveTo + Level.DistanceFromStart - StartingDisplacement));
-            }
-        }
-        if (Level.stage == 1 || Level.stage == 2) {            
-            if (Level.stage == 1) {
-                Level.CurrentStick = cc.instantiate(Level.LinePrefab);
-                Level.CurrentStick.setParent(Level.LevelElementsParent);
-                Level.CurrentStick.getComponent(LineElement).FirstPos = Level.PlayerAt.LastPos;
-                Level.CurrentStick.getComponent(LineElement).LastPos = Level.PlayerAt.LastPos;
-                Level.CurrentStick.getComponent(LineElement).EndsAt = Level.PlayerAt.EndsAt;
-                Level.Level.push(Level.CurrentStick.getComponent(LineElement));
-                Level.SortLevelOrder();
-                Level.stage = 2;
-            }
-            if (Level.stage == 2 && !Level.CurrentStick.getComponent(LineElement).CanExtend && !Level.CurrentStick.getComponent(LineElement).Falling) {
-                Level.stage = 0;
-                Player.Run();
-                if (Level.CurrentStick.getComponent(LineElement).LastPos < Level.TargetAt.FirstPos || Level.CurrentStick.getComponent(LineElement).LastPos > Level.TargetAt.LastPos) {
-                    Level.MoveTo = Level.CurrentStick.getComponent(LineElement).LastPos;
-                    if (Level.MoveTo-Level.PlayerAt.LastPos > 700) {
-                        Level.MoveTo = 700;
+        if (UIManager.Stage == 1) {
+            if (Level.stage == 0) {
+                if (-Level.DistanceFromStart >= Level.MoveTo - StartingDisplacement) {
+                    if (Level.MoveTo == Level.TargetAt.LastPos) {
+                        Player.AddScore();
+                        Level.stage = 1;
+                        Level.PlayerAt = Level.TargetAt;
+                        Player.Idle();
+                        Level.PlayerAt.WasVisited = true;
+                        Level.SortLevelOrder();
+                        let i = 0;
+                        do {
+                            Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
+                            i++;
+                        } while (Level.TargetAt.WasVisited != false);
+                        console.log("Next target is at " + Level.TargetAt.FirstPos + " " + Level.TargetAt.EndsAt);
+                        Level.GenerateLevel();
+                    } else {
+                        Player.Die();
+                        UIManager.Instance.Die();
+                        Level.stage = 3;
                     }
                 } else {
-                    Level.MoveTo = Level.TargetAt.LastPos;
+                    Level.MoveAll(Math.min(Level.BaseWalkSpeed * dt, Level.MoveTo + Level.DistanceFromStart - StartingDisplacement));
                 }
-                if (Level.TargetAt.OnCenter(Level.CurrentStick.getComponent(LineElement).LastPos)) {
-                    Player.AddScore();
-                    FadeAway.PopUp(-300 + Level.TargetAt.EndsAt + (Level.TargetAt.LastPos - Level.TargetAt.FirstPos)/2);
-                    Level.TargetAt.WasVisited = true;
+            }
+            if (Level.stage == 1 || Level.stage == 2) {
+                if (Level.stage == 1) {
+                    Level.CurrentStick = cc.instantiate(Level.LinePrefab);
+                    Level.CurrentStick.setParent(Level.LevelElementsParent);
+                    Level.CurrentStick.getComponent(LineElement).FirstPos = Level.PlayerAt.LastPos;
+                    Level.CurrentStick.getComponent(LineElement).LastPos = Level.PlayerAt.LastPos;
+                    Level.CurrentStick.getComponent(LineElement).EndsAt = Level.PlayerAt.EndsAt;
+                    Level.Level.push(Level.CurrentStick.getComponent(LineElement));
+                    Level.SortLevelOrder();
+                    Level.stage = 2;
+                }
+                if (Level.stage == 2 && !Level.CurrentStick.getComponent(LineElement).CanExtend && !Level.CurrentStick.getComponent(LineElement).Falling) {
+                    Level.stage = 0;
+                    Player.Run();
+                    if (Level.CurrentStick.getComponent(LineElement).LastPos < Level.TargetAt.FirstPos || Level.CurrentStick.getComponent(LineElement).LastPos > Level.TargetAt.LastPos) {
+                        Level.MoveTo = Level.CurrentStick.getComponent(LineElement).LastPos;
+                        if (Level.MoveTo - Level.PlayerAt.LastPos > 700) {
+                            Level.MoveTo = 700;
+                        }
+                    } else {
+                        Level.MoveTo = Level.TargetAt.LastPos;
+                    }
+                    if (Level.TargetAt.OnCenter(Level.CurrentStick.getComponent(LineElement).LastPos)) {
+                        Player.AddScore();
+                        FadeAway.PopUp(-300 + Level.TargetAt.EndsAt + (Level.TargetAt.LastPos - Level.TargetAt.FirstPos) / 2);
+                        Level.TargetAt.WasVisited = true;
+                    }
                 }
             }
         }

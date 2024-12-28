@@ -10,10 +10,13 @@ export default class Player extends cc.Component {
     public static Score: number = 0;
 
     public static SetDeafaultPos() {
+        Player.Dying = false;
+        Player.DeathMomentum = 4;
         Player.ScoreLabel.string = "0";
         Player.Score = 0;
-        Player.player.getComponent(cc.Animation).pause();
-        Player.player.setPosition(-190, -144.6);
+        Player.player.getComponentsInChildren(cc.Animation)[0].play();
+        Player.player.setPosition(0, 35);
+        Player.player.angle = 0;
     }
 
     public static AddScore() {
@@ -22,24 +25,25 @@ export default class Player extends cc.Component {
     }
 
     public static Die() {
+        Player.player.getComponentsInChildren(cc.Animation)[0].pause();
         Player.Dying = true;
     }
 
     public static Idle() {
-        Player.player.getComponent(cc.Animation).play("Idle");
+        Player.player.getComponentsInChildren(cc.Animation)[0].play("Idle");
     }
 
     public static Run() {
-        Player.player.getComponent(cc.Animation).play("Run");
+        Player.player.getComponentsInChildren(cc.Animation)[0].play("Run");
     }
 
     public static Kick() {
-        Player.player.getComponent(cc.Animation).play("Kick");
+        Player.player.getComponentsInChildren(cc.Animation)[0].play("Kick");
     }
 
     start() {
         Player.player = this.node;
-        Player.ScoreLabel = cc.find("Canvas/Score").getComponent(cc.Label);
+        Player.ScoreLabel = cc.find("Canvas/GameInterface/Score").getComponent(cc.Label);
     }
 
     update(dt) {

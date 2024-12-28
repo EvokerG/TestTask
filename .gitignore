@@ -48,4 +48,6 @@ Thumbs.db
 # VS Code files
 #//////////////////////////
 
+*.vsidx
 .vscode/
+/Scripts/.vs/
