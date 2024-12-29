@@ -1,0 +1,8 @@
+{
+  "engine": "cocos2d-html5",
+  "packages": "packages",
+  "version": "2.4.10",
+  "name": "TestTask",
+  "id": "e5ccc271-48ab-48a9-be68-55e9457543b2",
+  "isNew": false
+}
