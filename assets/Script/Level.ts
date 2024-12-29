@@ -25,6 +25,13 @@ export default class Level extends cc.Component {
     public static Background: cc.Node
     static BaseWalkSpeed = 600;
 
+    static PlayerAt: ColumnElement;
+    static BerryAt: BerryElement;
+    static MoveTo: number;
+    static TargetAt: ColumnElement
+    static CurrentStick: cc.Node
+    static stage: number;
+
     public static ResetLevel()
     {
         Player.SetDeafaultPos();
@@ -94,7 +101,6 @@ export default class Level extends cc.Component {
         Level.SortLevelOrder();
         let LastElementPos = Math.floor(Level.Level[Level.Level.length - 1].LastPos);
         let LastElementEndsAt = Math.floor(Level.Level[Level.Level.length - 1].EndsAt);
-        console.log("Creating from anchor " + LastElementPos + " " + LastElementEndsAt);
         while (LastElementEndsAt < GeneratorQueueLength) {             
             let column = cc.instantiate(Level.ColumnPrefab);
             column.parent = Level.LevelElementsParent;
@@ -110,14 +116,12 @@ export default class Level extends cc.Component {
                 let newFruit = BerryElement.newBerry();
                 let fruit = cc.instantiate(Level.FruitPrefab);
                 fruit.parent = Level.LevelElementsParent;
-                console.log("    Created berry at " + newFruit.FirstPos + " " + newFruit.LastPos + " " + newFruit.EndsAt);
                 fruit.getComponent(BerryElement).FirstPos = newFruit.FirstPos;
                 fruit.getComponent(BerryElement).LastPos = newFruit.LastPos;
                 fruit.getComponent(BerryElement).EndsAt = newFruit.EndsAt;
                 Level.Place(fruit.getComponent(BerryElement));
                 Level.Level.push(fruit.getComponent(BerryElement));
             }
-            console.log("    Created column at " + newColumn.FirstPos + " " + newColumn.LastPos + " " + newColumn.EndsAt);
             Level.Level.push(column.getComponent(ColumnElement));
             LastElementPos = newColumn.LastPos;
             LastElementEndsAt = newColumn.EndsAt;
@@ -176,19 +180,12 @@ export default class Level extends cc.Component {
         }, 0, 0, 0.4);           
     }
 
-    static PlayerAt: ColumnElement;
-    static BerryAt: BerryElement;
-    static MoveTo: number;
-    static TargetAt: ColumnElement
-    static CurrentStick: cc.Node
-    static stage: number;  //0 - ходьба, 1 - инициализация объектов, 2 - ожидание, 3 - проигрыш
-
     static FindPlayerAt(element, index, array) {
         return (element.FirstPos = Level.PlayerAt.FirstPos && element.LastPos == Level.PlayerAt.LastPos)
     }
 
     update(dt) {
-        if (UIManager.Stage == 1) {
+        if (UIManager.GameLoopStage == 1) {
             if (Level.stage == 0) {
                 if (-Level.DistanceFromStart >= Level.BerryAt.FirstPos - StartingDisplacement - 10 && -Level.DistanceFromStart <= Level.BerryAt.LastPos - StartingDisplacement + 20 && Player.Flipped) {
                     Level.BerryAt.node.active = false;

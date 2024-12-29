@@ -32,7 +32,6 @@ export default class ColumnElement extends LevelElement
     public OnCenter(Position: number):boolean
     {
         let Center = (this.FirstPos + this.LastPos) / 2;
-        console.log((Position >= Center - ColumnCenterHalfWidth && Position <= Center + ColumnCenterHalfWidth) + " " + Position + " " + (Center - ColumnCenterHalfWidth) + " " + (Center + ColumnCenterHalfWidth))
         return (Position >= Center - ColumnCenterHalfWidth && Position <= Center + ColumnCenterHalfWidth);
     }
 

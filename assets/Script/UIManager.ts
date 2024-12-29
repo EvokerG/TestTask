@@ -19,8 +19,7 @@ export default class UIManager extends cc.Component {
     FruitLabel2: cc.Label = null;
 
     public static Instance: UIManager;
-
-    public static Stage = 0;
+    public static GameLoopStage = 0;
 
     start() {
         UIManager.Instance = this;
@@ -28,26 +27,26 @@ export default class UIManager extends cc.Component {
 
     public Play() {
         Player.Idle();
-        UIManager.Stage = 1;
+        UIManager.GameLoopStage = 1;
         this.MenuInterface.active = false;
         this.GameInterface.active = true;
     }
 
     public Die() {
-        UIManager.Stage = 2;
+        UIManager.GameLoopStage = 2;
         this.GameOverInterface.active = true;
     }
 
     public Restart() {
         Player.Idle();
-        UIManager.Stage = 1;
+        UIManager.GameLoopStage = 1;
         this.GameOverInterface.active = false;
         Level.ResetLevel();
     }
 
     public Home() {
         Player.Idle();
-        UIManager.Stage = 0;
+        UIManager.GameLoopStage = 0;
         this.GameOverInterface.active = false;
         this.GameInterface.active = false;
         this.MenuInterface.active = true;

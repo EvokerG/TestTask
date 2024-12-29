@@ -32,9 +32,6 @@ export default class LineElement extends LevelElement {
         this.Sticklength = 0;
     }
 
-    Press() {
-    }
-
     start() {
         this.node.active = true;
     }

@@ -47,17 +47,17 @@ export default class Player extends cc.Component {
 
     public static Kick() {
         Player.player.getComponentsInChildren(cc.Animation).forEach(function (value) { value.play("Kick") });
-    }    
-
-    static Flip() {
-        Player.player.parent.scaleY *= -1;
-        Player.Flipped = !Player.Flipped;
-    }
+    }       
 
     public static PlayerAddEvent() {
         Player.player.parent.parent.on(cc.Node.EventType.TOUCH_START, function () {
             if (Player.AllowFlip) { Player.Flip(); }
         }, this);
+    }
+
+    static Flip() {
+        Player.player.parent.scaleY *= -1;
+        Player.Flipped = !Player.Flipped;
     }
 
     start() {
