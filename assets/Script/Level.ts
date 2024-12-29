@@ -49,6 +49,12 @@ export default class Level extends cc.Component {
             Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
             i++;
         } while (Level.TargetAt.WasVisited != false);
+        if (Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + 1].WasVisited == undefined) {
+            Level.BerryAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + 1];
+        } else {
+            BerryElement.Parametres = [-200, -200, -200];
+            Level.BerryAt = new BerryElement();
+        }
         Level.stage = 1;
     }
 
@@ -160,11 +166,18 @@ export default class Level extends cc.Component {
                 Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
                 i++;
             } while (Level.TargetAt.WasVisited != false);
+            if (Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + 1].WasVisited == undefined) {
+                Level.BerryAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + 1];
+            } else {
+                BerryElement.Parametres = [-200, -200, -200];
+                Level.BerryAt = new BerryElement();
+            }
             Level.stage = 1;
         }, 0, 0, 0.4);           
     }
 
-    static PlayerAt: ColumnElement
+    static PlayerAt: ColumnElement;
+    static BerryAt: BerryElement;
     static MoveTo: number;
     static TargetAt: ColumnElement
     static CurrentStick: cc.Node
@@ -177,9 +190,25 @@ export default class Level extends cc.Component {
     update(dt) {
         if (UIManager.Stage == 1) {
             if (Level.stage == 0) {
+                if (-Level.DistanceFromStart >= Level.BerryAt.FirstPos - StartingDisplacement - 10 && -Level.DistanceFromStart <= Level.BerryAt.LastPos - StartingDisplacement + 20 && Player.Flipped) {
+                    Level.BerryAt.node.active = false;
+                    BerryElement.Parametres = [-200, -200, -200];
+                    Level.BerryAt = new BerryElement();                    
+                    Player.PossibleFruits++;
+                }
+                if (-Level.DistanceFromStart >= Level.TargetAt.FirstPos - StartingDisplacement + 20) {
+                    Player.AllowFlip = false;
+                    if (Player.Flipped) {
+                        Player.Die();
+                        UIManager.Instance.Die();
+                        Level.stage = 3;
+                    }
+                }
                 if (-Level.DistanceFromStart >= Level.MoveTo - StartingDisplacement) {
                     if (Level.MoveTo == Level.TargetAt.LastPos) {
                         Player.AddScore();
+                        Player.Fruits += Player.PossibleFruits;
+                        Player.PossibleFruits = 0;
                         Level.stage = 1;
                         Level.PlayerAt = Level.TargetAt;
                         Player.Idle();
@@ -190,9 +219,16 @@ export default class Level extends cc.Component {
                             Level.TargetAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + i];
                             i++;
                         } while (Level.TargetAt.WasVisited != false);
+                        if (Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + 1].WasVisited == undefined) {
+                            Level.BerryAt = Level.Level[Level.Level.findIndex(Level.FindPlayerAt) + 1];
+                        } else {
+                            BerryElement.Parametres = [-200,-200,-200];
+                            Level.BerryAt = new BerryElement();
+                        }
                         Level.GenerateLevel();
                     } else {
                         Player.Die();
+                        Player.AllowFlip = false;
                         UIManager.Instance.Die();
                         Level.stage = 3;
                     }
@@ -214,10 +250,12 @@ export default class Level extends cc.Component {
                 if (Level.stage == 2 && !Level.CurrentStick.getComponent(LineElement).CanExtend && !Level.CurrentStick.getComponent(LineElement).Falling) {
                     Level.stage = 0;
                     Player.Run();
+                    Player.PlayerAddEvent();
+                    Player.AllowFlip = true;
                     if (Level.CurrentStick.getComponent(LineElement).LastPos < Level.TargetAt.FirstPos || Level.CurrentStick.getComponent(LineElement).LastPos > Level.TargetAt.LastPos) {
                         Level.MoveTo = Level.CurrentStick.getComponent(LineElement).LastPos;
                         if (Level.MoveTo - Level.PlayerAt.LastPos > 700) {
-                            Level.MoveTo = 700;
+                            Level.MoveTo = Level.PlayerAt.LastPos + 700;
                         }
                     } else {
                         Level.MoveTo = Level.TargetAt.LastPos;

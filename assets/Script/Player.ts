@@ -8,6 +8,10 @@ export default class Player extends cc.Component {
     public static player: cc.Node;
     static ScoreLabel: cc.Label;
     public static Score: number = 0;
+    public static AllowFlip: boolean = false;
+    public static Flipped: boolean = false;
+    public static PossibleFruits: number = 0;
+    public static Fruits: number = 0;
 
     public static SetDeafaultPos() {
         Player.Dying = false;
@@ -25,25 +29,41 @@ export default class Player extends cc.Component {
     }
 
     public static Die() {
+        if (Player.Flipped) {
+            Player.Flip();
+        }
         Player.player.getComponentsInChildren(cc.Animation)[0].pause();
+        Player.PossibleFruits = 0;
         Player.Dying = true;
     }
 
     public static Idle() {
-        Player.player.getComponentsInChildren(cc.Animation)[0].play("Idle");
+        Player.player.getComponentsInChildren(cc.Animation).forEach(function (value) { value.play("Idle") });
     }
 
     public static Run() {
-        Player.player.getComponentsInChildren(cc.Animation)[0].play("Run");
+        Player.player.getComponentsInChildren(cc.Animation).forEach(function (value) { value.play("Run") });
     }
 
     public static Kick() {
-        Player.player.getComponentsInChildren(cc.Animation)[0].play("Kick");
+        Player.player.getComponentsInChildren(cc.Animation).forEach(function (value) { value.play("Kick") });
+    }    
+
+    static Flip() {
+        Player.player.parent.scaleY *= -1;
+        Player.Flipped = !Player.Flipped;
+    }
+
+    public static PlayerAddEvent() {
+        Player.player.parent.parent.on(cc.Node.EventType.TOUCH_START, function () {
+            if (Player.AllowFlip) { Player.Flip(); }
+        }, this);
     }
 
     start() {
         Player.player = this.node;
         Player.ScoreLabel = cc.find("Canvas/GameInterface/Score").getComponent(cc.Label);
+        Player.PlayerAddEvent();
     }
 
     update(dt) {

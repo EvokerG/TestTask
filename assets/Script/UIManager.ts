@@ -1,4 +1,5 @@
 import Level from "./Level";
+import Player from "./Player";
 
 const {ccclass, property} = cc._decorator;
 
@@ -12,6 +13,11 @@ export default class UIManager extends cc.Component {
     @property(cc.Node)
     GameOverInterface: cc.Node = null;
 
+    @property(cc.Label)
+    FruitLabel1: cc.Label = null;
+    @property(cc.Label)
+    FruitLabel2: cc.Label = null;
+
     public static Instance: UIManager;
 
     public static Stage = 0;
@@ -21,6 +27,7 @@ export default class UIManager extends cc.Component {
     }
 
     public Play() {
+        Player.Idle();
         UIManager.Stage = 1;
         this.MenuInterface.active = false;
         this.GameInterface.active = true;
@@ -28,22 +35,27 @@ export default class UIManager extends cc.Component {
 
     public Die() {
         UIManager.Stage = 2;
-        this.GameInterface.active = false;
         this.GameOverInterface.active = true;
     }
 
     public Restart() {
+        Player.Idle();
         UIManager.Stage = 1;
-        this.GameInterface.active = true;
         this.GameOverInterface.active = false;
         Level.ResetLevel();
     }
 
     public Home() {
+        Player.Idle();
         UIManager.Stage = 0;
         this.GameOverInterface.active = false;
         this.GameInterface.active = false;
         this.MenuInterface.active = true;
         Level.ResetLevel();
+    }
+
+    update() {
+        this.FruitLabel1.string = Player.Fruits.toString();
+        this.FruitLabel2.string = Player.Fruits.toString();
     }
 }
