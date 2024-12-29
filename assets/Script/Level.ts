@@ -227,6 +227,9 @@ export default class Level extends cc.Component {
                         }
                         Level.GenerateLevel();
                     } else {
+                        if (Level.MoveTo < Level.TargetAt.FirstPos) {
+                            Level.CurrentStick.getComponent(LineElement).Crash();
+                        }
                         Player.Die();
                         Player.AllowFlip = false;
                         UIManager.Instance.Die();

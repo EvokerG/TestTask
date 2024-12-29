@@ -13,6 +13,7 @@ export default class LineElement extends LevelElement {
     private Pressed: boolean = false
     private PressedPrev: boolean = false
     public Falling: boolean = false; 
+    Crashing: boolean = false;
 
     constructor() {
         super();
@@ -44,29 +45,41 @@ export default class LineElement extends LevelElement {
         this.EndsAt = this.LastPos;
     }
 
+    public Crash() {
+        this.Crashing = true;
+    }
+
     update(deltaTime: number)
     {
-        if (this.CanExtend && this.Pressed) {
-            this.Sticklength += StickExtensionSpeed * deltaTime;
-            this.node.height = this.Sticklength;
-        } else {
-            if (this.PressedPrev != this.Pressed && this.CanExtend) {
-                this.CanExtend = false;
-                this.Falling = true;
-                this.StickFallDelay = 0.5;
-                this.node.parent.off(cc.Node.EventType.TOUCH_START);                
-                this.node.parent.off(cc.Node.EventType.TOUCH_END);
-                Player.Kick();
+        if (this.Crashing) {
+            this.node.angle -= Math.min(Math.abs(70 - this.node.rotation) * 10 * deltaTime, Math.abs(this.node.rotation - 180));
+            if (this.node.rotation == 180) {
+                this.Crashing = false;
             }
-            if (this.StickFallDelay <= 0 && this.Falling) {
-                this.node.angle -= Math.min(Math.abs(-5 - this.node.rotation) * 5 * deltaTime, Math.abs(this.node.rotation - 90));
-                if (this.node.rotation == 90) {
-                    this.EndedFall();
-                }
+        }
+        else {
+            if (this.CanExtend && this.Pressed) {
+                this.Sticklength += StickExtensionSpeed * deltaTime;
+                this.node.height = this.Sticklength;
             } else {
+                if (this.PressedPrev != this.Pressed && this.CanExtend) {
+                    this.CanExtend = false;
+                    this.Falling = true;
+                    this.StickFallDelay = 0.5;
+                    this.node.parent.off(cc.Node.EventType.TOUCH_START);
+                    this.node.parent.off(cc.Node.EventType.TOUCH_END);
+                    Player.Kick();
+                }
+                if (this.StickFallDelay <= 0 && this.Falling) {
+                    this.node.angle -= Math.min(Math.abs(-5 - this.node.rotation) * 5 * deltaTime, Math.abs(this.node.rotation - 90));
+                    if (this.node.rotation == 90) {
+                        this.EndedFall();
+                    }
+                } else {
                     this.StickFallDelay -= deltaTime;
-            }            
-        }    
-        this.PressedPrev = this.Pressed;
+                }
+            }
+            this.PressedPrev = this.Pressed;
+        }
     }
 }
